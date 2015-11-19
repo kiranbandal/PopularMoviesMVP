@@ -1,7 +1,30 @@
 package com.kirangisp.commonobj;
 
-/**
- * Created by User on 18-Nov-15.
- */
+/*
+* Holds the request details. Instance of this class is passed to the FetchMovieData task.
+* */
 public class FetchMovieRequest {
+
+    private String queryURL;
+    private FetchMovieRequestType requestType;
+    private String logTagName;
+
+
+    public FetchMovieRequest(String url, FetchMovieRequestType rqstType, String logTag) {
+        this.queryURL = url;
+        this.requestType = rqstType;
+        this.logTagName = logTag;
+    }
+
+    public String getQueryURL() {
+        return queryURL;
+    }
+
+    public String getLogTagName() {
+        return logTagName;
+    }
+
+    public FetchMovieRequestType getRequestType() {
+        return requestType;
+    }
 }
