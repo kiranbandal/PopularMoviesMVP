@@ -10,6 +10,11 @@ public class FetchMovieRequest {
     private String logTagName;
 
 
+    public FetchMovieRequest(String url, FetchMovieRequestType rqstType) {
+        this.queryURL = url;
+        this.requestType = rqstType;
+    }
+
     public FetchMovieRequest(String url, FetchMovieRequestType rqstType, String logTag) {
         this.queryURL = url;
         this.requestType = rqstType;
