@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PopularMoviesMVP</string>
+    <string name="title_activity_movie_posters">MoviePostersActivity</string>
+    <string name="title_activity_posters">PostersActivity</string>
+</resources>

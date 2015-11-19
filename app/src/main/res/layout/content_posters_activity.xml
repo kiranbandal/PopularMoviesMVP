@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.kirangisp.popularmoviesmvp.View.Activities.PostersActivity"
+    tools:showIn="@layout/layout_posters_activity">
+
+    <!--The layout file used in class PostersActivity.java. This activity contains only one
+   child element, i.e. FrameLayout. This FrameLayout will hold the following fragment
+   layout file , layout_posters_fragment-->
+
+    <FrameLayout
+        android:id="@+id/container_for_posters_fragment"
+        style="@style/frameLayoutHoldingPostersFragment" />
+
+
+</RelativeLayout>

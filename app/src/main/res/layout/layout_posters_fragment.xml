@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LinearLayoutHoldingPostersGridView">
+
+
+    <!--Grid view displaying movie posters-->
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/moviePostersGrdView"
+        style="@style/postesGridView" />
+
+</LinearLayout>
