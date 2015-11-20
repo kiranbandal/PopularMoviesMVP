@@ -4,63 +4,72 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * The moviedb api network call returns the json string.
- * After parsing that string, we save movie poster data in ArrayList
- * of instances of this class. This class also implements the Parcelable interface so that
- * the ArrayList of this class instances can ve saved in the bundle.
+ * Created by User on 20-Nov-15.
  */
-public class MoviePosterData implements Parcelable {
+public class MoviePosterdata implements Parcelable{
 
-    private String mMoviePosterPath;
-    private String mMovieIdInAPI;
+    String moviePosterPath;
+    String movieIdInAPI;
 
-    //region Constructors
-    public MoviePosterData(String moviePosterPathInput, String movieIdInAPIInput) {
-        mMoviePosterPath = moviePosterPathInput;
-        mMovieIdInAPI = movieIdInAPIInput;
+    public MoviePosterdata(String moviePosterPathInput, String movieIdInAPIInput) {
+        this.moviePosterPath = moviePosterPathInput;
+        this.movieIdInAPI = movieIdInAPIInput;
     }
 
     //Constructor needed for Parcel CREATOR
-    MoviePosterData(Parcel input){
-        mMovieIdInAPI = input.readString();
-        mMoviePosterPath = input.readString();
+    MoviePosterdata(Parcel input){
+        movieIdInAPI = input.readString();
+        moviePosterPath = input.readString();
     }
-    //endregion
 
     public String getMoviePosterPath() {
-        return mMoviePosterPath;
+
+        return moviePosterPath;
     }
 
 
     public String getMovieIDInAPI() {
-        return mMovieIdInAPI;
+
+        return movieIdInAPI;
     }
 
-    //region Parcelable Methods
+    /**
+     * Describe the kinds of special objects contained in this Parcelable's
+     * marshalled representation.
+     *
+     * @return a bitmask indicating the set of special object types marshalled
+     * by the Parcelable.
+     */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * Flatten this object in to a Parcel.
+     *
+     * @param dest  The Parcel in which the object should be written.
+     * @param flags Additional flags about how the object should be written.
+     *              May be 0 or {@link #PARCELABLE_WRITE_RETURN_VALUE}.
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 
         //Write movie ID and it's poster path to the parcel
-        dest.writeString(mMovieIdInAPI);
-        dest.writeString(mMoviePosterPath);
+        dest.writeString(movieIdInAPI);
+        dest.writeString(moviePosterPath);
 
     }
 
-    public static final Parcelable.Creator<MoviePosterData> CREATOR
-            = new Parcelable.Creator<MoviePosterData>() {
+    public static final Parcelable.Creator<MoviePosterdata> CREATOR
+            = new Parcelable.Creator<MoviePosterdata>() {
 
-        public MoviePosterData createFromParcel(Parcel in) {
-            return new MoviePosterData(in);
+        public MoviePosterdata createFromParcel(Parcel in) {
+            return new MoviePosterdata(in);
         }
 
-        public MoviePosterData[] newArray(int size) {
-            return new MoviePosterData[size];
+        public MoviePosterdata[] newArray(int size) {
+            return new MoviePosterdata[size];
         }
     };
-    //endregion
 }
