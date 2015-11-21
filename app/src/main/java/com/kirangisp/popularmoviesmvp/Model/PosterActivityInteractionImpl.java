@@ -4,8 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
-
-import com.kirangisp.commonobj.CommonGlobalObjects;
+import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 
 /**
  * Created by User on 18-Nov-15.

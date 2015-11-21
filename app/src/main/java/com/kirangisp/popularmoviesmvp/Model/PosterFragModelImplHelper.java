@@ -3,9 +3,8 @@ package com.kirangisp.popularmoviesmvp.Model;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
-
-import com.kirangisp.commonobj.CommonGlobalObjects;
-import com.kirangisp.commonobj.RunningDeviceProps;
+import com.kirangisp.commonandroidobjects.RunningDeviceProps;
+import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 
 /**
  * Helper class for Poster Fragment Interaction Impl

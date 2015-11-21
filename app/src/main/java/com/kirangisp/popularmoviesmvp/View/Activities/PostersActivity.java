@@ -6,11 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.kirangisp.commonobj.CommonGlobalObjects;
 import com.kirangisp.popularmoviesmvp.Presenter.IPostersActivityView;
 import com.kirangisp.popularmoviesmvp.Presenter.PosterActivityPresenterImpl;
 import com.kirangisp.popularmoviesmvp.R;
 import com.kirangisp.popularmoviesmvp.View.Fragments.PostersFragment;
+import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 
 public class PostersActivity extends AppCompatActivity implements IPostersActivityView {
 

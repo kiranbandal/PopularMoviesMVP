@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kirangisp.commonobj.CommonGlobalObjects;
 import com.kirangisp.popularmoviesmvp.Presenter.IPosterFragmentPresenter;
 import com.kirangisp.popularmoviesmvp.Presenter.IPosterFragmentView;
 import com.kirangisp.popularmoviesmvp.Presenter.PosterFragmentPresenterImpl;
 import com.kirangisp.popularmoviesmvp.R;
+import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 
 
 /**
@@ -79,8 +79,16 @@ public class PostersFragment extends Fragment implements IPosterFragmentView {
     @Override
     public void deliverPopularMoviesDataInJson(String rawJSON) {
 
-        String pplrMoviesJson;
-        pplrMoviesJson= rawJSON;
+        //get the popular movies json from the incoming parameter
+        String pplrMoviesJson = rawJSON;
+
+        //create instance of response handler and depending in request type, call the appropriate method
+        MovieResponseHandler responseHandler = new MovieResponseHandler();
+
+        //save the ArrayList in global property so that it can be accessed on the reqd fragment
+        CommonGlobalObjects.setMoviePosterInfoArrayLst(new MovieJSONParser(pplrMoviesJson).parseFavoriteMoviesJSON());
+        responseHandler.displayMoviePosters(CommonGlobalObjects.getMoviePosterInfoArrayLst(),
+                getActivity(),R.id.moviePostersGrdView);
 
     }
     //endregion
