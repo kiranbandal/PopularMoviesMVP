@@ -11,14 +11,20 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 import com.kirangisp.commonandroidobjects.MoviePosterdata;
+import com.kirangisp.commonandroidobjects.SelectedMovieData;
 import com.kirangisp.popularmoviesmvp.R;
 import com.kirangisp.popularmoviesmvp.View.MovieDataCustomAdapter;
 import com.kirangisp.commonandroidobjects.RunningDeviceProps;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Class responsible for rendering the movie data json to the Posters and other
@@ -31,108 +37,102 @@ public class MovieResponseHandler {
     private Drawable mPlaceHolderDrawable = null;
     private Drawable mErrorDrawable = null;
 
-//    public void displayMovieDetails(Context appContext, HelperModuleMovieDetails movieDtls, HashMap movieDetailsFragViewIDs) {
-//
-//        try {
-//
-//            //Find views and display the data from passed in movie details instance
-//            TextView titleTxtView = (TextView) ((Activity) appContext).findViewById((Integer)
-//                    movieDetailsFragViewIDs.get(CommonGlobalObjects.getTitleTextViewKey()));
-//
-//            TextView releaseDateTxtView = (TextView) ((Activity) appContext).findViewById((Integer)
-//                    movieDetailsFragViewIDs.get(CommonGlobalObjects.getReleaseDateTextViewKey()));
-//
-//            TextView voteTxtView = (TextView) ((Activity) appContext).findViewById((Integer)
-//                    movieDetailsFragViewIDs.get(CommonGlobalObjects.getVoteTextViewKey()));
-//
-//            TextView synopsisTxtView = (TextView) ((Activity) appContext).findViewById((Integer)
-//                    movieDetailsFragViewIDs.get(CommonGlobalObjects.getSynopsisTextViewKey()));
-//
-//            //TextViews for Literal Texts
-//            TextView releaseDate = (TextView) ((Activity) appContext).findViewById((Integer)
-//                    movieDetailsFragViewIDs.get(CommonGlobalObjects.getReleaseDateLiteralTextViewKey()));
-//
-//            TextView vote = (TextView) ((Activity) appContext).findViewById((Integer)
-//                    movieDetailsFragViewIDs.get(CommonGlobalObjects.getVoteLiteralTextViewKey()));
-//
-//            //find image View
-//            ImageView moviePosterImgView = (ImageView) ((Activity) appContext).findViewById((Integer)
-//                    movieDetailsFragViewIDs.get(CommonGlobalObjects.getPosterImageViewKey()));
-//
-//            titleTxtView.setText(movieDtls.getTitle());
-//
-//            releaseDate.setText("Release Date:");
-//            releaseDateTxtView.setText(movieDtls.getReleaseYear());
-//
-//            vote.setText("Average Vote:");
-//            voteTxtView.setText(movieDtls.getVote());
-//
-//            //If the sysnopsis returned is null, then
-//            if (movieDtls.getSynopsis().toUpperCase().equals("NULL")) {
-//                synopsisTxtView.setText("No Synopsis Found!!");
-//            } else {
-//                synopsisTxtView.setText(movieDtls.getSynopsis());
-//            }
-//
-//            //construct the url to getthe the movie thumbnail using Picasso
-//            String mMoviePosterBaseURL = CommonGlobalObjects.getMoviePosterBaseURL();
-//            String mPosterImageSize = CommonGlobalObjects.getMoviePosterImageSize();
-//
-//            //set the Place holder image from Drawable if not set already
-//            if (mPlaceHolderDrawable == null) {
-//                setPlaceHolderDrawable(appContext);
-//            }
-//
-//            //set the Place holder image from Drawable if not set already
-//            if (mErrorDrawable == null) {
-//                setErrorDrawable(appContext);
-//            }
-//
-//            //to be sued in Picasso api
-//            String posterURL =
-//                    mMoviePosterBaseURL
-//                            + mPosterImageSize
-//                            + movieDtls.getMoviePosterPath();
-//
-//            try {
-//                //load image into the movie poster image view using Picasso, resize it depending on te screen desneity
-//                Picasso.with(appContext).load(posterURL)
-//                        .placeholder(mPlaceHolderDrawable)
-//                        .error(mErrorDrawable)
-//                        .resize(
-//                                RunningDeviceProps.getMovieDetailsPosterResizeWidth(),
-//                                RunningDeviceProps.getMovieDetailsPosterResizeHeight())
-//                        .into(moviePosterImgView);
-//            }
-//            catch (ClassCastException ex) {
-//                String errMsg = GlobalObjects.constructErrorMsg("Class Cast Exception",
-//                        "displayMovieDetails()", ex.getMessage());
-//                Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-//            }
-//            catch (IllegalArgumentException e) {
-//                String errMsg = GlobalObjects.constructErrorMsg("Picasso IllegalArgumentException",
-//                        "Picasso.with()", e.getMessage());
-//                Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-//            }
-//            catch (Exception ex) {
-//                String errMsg = GlobalObjects.constructErrorMsg("Picasso Generic Exception", "Picasso.with()()", ex.getMessage());
-//                Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-//            }
-//        }
-//
-//        catch (NullPointerException ex) {
-//            String errMsg = GlobalObjects.constructErrorMsg("Null Pointer Exception", "displayMovieDetailsNew()", ex.getMessage());
-//            Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-//        }
-//        catch (WindowManager.BadTokenException ex) {
-//            String errMsg = GlobalObjects.constructErrorMsg("Bad Token Exception", "displayMovieDetailsNew()", ex.getMessage());
-//            Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-//        }
-//        catch (Exception ex) {
-//            String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "displayMovieDetailsNew()", ex.getMessage());
-//            Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-//        }
-//    }
+    public void displayMovieDetails(Context appContext,
+                                    SelectedMovieData movieDtls) {
+
+        try {
+
+            //Find views and display the data from passed in movie details instance
+            TextView titleTxtView = (TextView) ((Activity) appContext).findViewById(R.id.titleTextView);
+
+            TextView releaseDateTxtView = (TextView) ((Activity) appContext).findViewById(R.id.releaseDateTextview);
+
+            TextView voteTxtView = (TextView) ((Activity) appContext).findViewById(R.id.voteTextView);
+
+            TextView synopsisTxtView = (TextView) ((Activity) appContext).findViewById(R.id.synopTextView);
+
+            //TextViews for Literal Texts
+            TextView releaseDate = (TextView) ((Activity) appContext).findViewById(R.id.releaseDateTextLiteral);
+
+            TextView vote = (TextView) ((Activity) appContext).findViewById(R.id.voteTextLiteral);
+
+            //find image View
+            ImageView moviePosterImgView = (ImageView) ((Activity) appContext).findViewById(R.id.moviePosterImgView);
+
+            titleTxtView.setText(movieDtls.getTitle());
+
+            releaseDate.setText("Release Date:");
+            releaseDateTxtView.setText(movieDtls.getReleaseYear());
+
+            vote.setText("Average Vote:");
+            voteTxtView.setText(movieDtls.getVote());
+
+            //If the synopsis returned is null, then
+            if (movieDtls.getSynopsis().toUpperCase().equals("NULL")) {
+                synopsisTxtView.setText("No Synopsis Found!!");
+            } else {
+                synopsisTxtView.setText(movieDtls.getSynopsis());
+            }
+
+            //construct the url to get the the movie thumbnail using Picasso
+            String mMoviePosterBaseURL = CommonGlobalObjects.getMoviePosterBaseURL();
+            String mPosterImageSize = CommonGlobalObjects.getMoviePosterImageSize();
+
+            //set the Place holder image from Drawable if not set already
+            if (mPlaceHolderDrawable == null) {
+                setPlaceHolderDrawable(appContext);
+            }
+
+            //set the Place holder image from Drawable if not set already
+            if (mErrorDrawable == null) {
+                setErrorDrawable(appContext);
+            }
+
+            //to be sued in Picasso api
+            String posterURL =
+                    mMoviePosterBaseURL
+                            + mPosterImageSize
+                            + movieDtls.getMoviePosterPath();
+
+            try {
+                //load image into the movie poster image view using Picasso, resize it depending on te screen desneity
+                Picasso.with(appContext).load(posterURL)
+                        .placeholder(mPlaceHolderDrawable)
+                        .error(mErrorDrawable)
+                        .resize(
+                                RunningDeviceProps.getMovieDetailsPosterResizeWidth(),
+                                RunningDeviceProps.getMovieDetailsPosterResizeHeight())
+                        .into(moviePosterImgView);
+            }
+            catch (ClassCastException ex) {
+                String errMsg = CommonGlobalObjects.constructErrorMsg("Class Cast Exception",
+                        "displayMovieDetails()", ex.getMessage());
+                Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
+            }
+            catch (IllegalArgumentException e) {
+                String errMsg = CommonGlobalObjects.constructErrorMsg("Picasso IllegalArgumentException",
+                        "Picasso.with()", e.getMessage());
+                Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
+            }
+            catch (Exception ex) {
+                String errMsg = CommonGlobalObjects.constructErrorMsg("Picasso Generic Exception", "Picasso.with()()", ex.getMessage());
+                Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
+            }
+        }
+
+        catch (NullPointerException ex) {
+            String errMsg = CommonGlobalObjects.constructErrorMsg("Null Pointer Exception", "displayMovieDetailsNew()", ex.getMessage());
+            Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
+        }
+        catch (WindowManager.BadTokenException ex) {
+            String errMsg = CommonGlobalObjects.constructErrorMsg("Bad Token Exception", "displayMovieDetailsNew()", ex.getMessage());
+            Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
+        }
+        catch (Exception ex) {
+            String errMsg = CommonGlobalObjects.constructErrorMsg("Generic Exception", "displayMovieDetailsNew()", ex.getMessage());
+            Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
+        }
+    }
 
     /*
       * Display posters of favorite movies (count :twenty by design of movie db api)

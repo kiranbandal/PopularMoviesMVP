@@ -6,7 +6,7 @@
     <!--Titles for Options Menu items on Movie Posters Activity-->
     <string name="menu_title_Sort_most_popular">Show Most Popular</string>
     <string name="menu_title_sort_highest_rated">Show Highest Rated</string>
-
+    <string name="title_activity_movie_details">MovieDetailsActivity</string>
 
 
 </resources>

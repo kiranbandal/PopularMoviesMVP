@@ -12,4 +12,8 @@
     tools:context="com.kirangisp.popularmoviesmvp.View.Activities.MovieDetailsActivity"
     tools:showIn="@layout/layout_movie_details_activity">
 
+    <FrameLayout
+        android:id="@+id/MovieDetailFragContainer"
+        style="@style/frameLayoutInMovieDetailsActivity" />
+
 </RelativeLayout>

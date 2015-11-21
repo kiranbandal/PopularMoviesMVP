@@ -13,4 +13,69 @@
     <dimen name="hdpi_left_margin">5dp</dimen>
     <dimen name="hdpi_right_margin">5dp</dimen>
 
+    <!--Movie Title TExt View-->
+    <dimen name="movieTitleTextSize">30sp</dimen>
+
+    <!--Movie Poster Image View-->
+    <dimen name="posterImgViewLeftMargin">5dp</dimen>
+    <dimen name="posterImgViewTopMargin">5dp</dimen>
+
+    <!--Release Date Literal text-->
+    <dimen name="releaseDateTextLieralLeftMargin">10dp</dimen>
+    <dimen name="releaseDateTextLieralTopMargin">10dp</dimen>
+
+    <!--Release Date TExt view -->
+    <dimen name="releaseDateTextTextViewLeftMargin">10dp</dimen>
+    <dimen name="releaseDateTextTextViewTopMargin">5dp</dimen>
+
+    <!--Vote Literal text-->
+    <dimen name="voteTextLieralLeftMargin">10dp</dimen>
+    <dimen name="voteTextLieralTopMargin">10dp</dimen>
+
+    <!--Vote TExt view -->
+    <dimen name="voteTextTextViewLeftMargin">10dp</dimen>
+    <dimen name="voteTextTextViewTopMargin">5dp</dimen>
+
+    <!--Synlopsis Scroll view -->
+    <dimen name="synoScrollViewBottomMargin">5dp</dimen>
+    <dimen name="synoScrollViewTopmMargin">5dp</dimen>
+
+    <!--Synopsis scroll Text View-->
+    <dimen name="synoTextViewMargin">5dp</dimen>
+    <dimen name="synoTextViewPadding">5dp</dimen>
+
+
+    <!--Dimensions for Movie Info Details Layout - Landscape Orientation-->
+
+    <!--Movie Poster Image View-->
+    <dimen name="posterImgViewLeftMarginLandscape">5dp</dimen>
+    <dimen name="posterImgViewTopMarginLandscape">5dp</dimen>
+
+    <!--Release Date Literal text-->
+    <dimen name="releaseDateTextLieralLeftMarginLandscape">25dp</dimen>
+    <dimen name="releaseDateTextLieralTopMarginLandscape">10dp</dimen>
+
+    <!--Release Date TExt view -->
+    <dimen name="releaseDateTextTextViewLeftMarginLandscape">25dp</dimen>
+    <dimen name="releaseDateTextTextViewTopMarginLandscape">5dp</dimen>
+
+    <!--Vote Literal text-->
+    <dimen name="voteTextLieralLeftMarginLandscape">25dp</dimen>
+    <dimen name="voteTextLieralTopMarginLandscape">10dp</dimen>
+
+    <!--Vote TExt view -->
+    <dimen name="voteTextTextViewLeftMarginLandscape">25dp</dimen>
+    <dimen name="voteTextTextViewTopMarginLandscape">5dp</dimen>
+
+    <!--Synlopsis Scroll view -->
+    <dimen name="synoScrollViewBottomMarginLandscape">5dp</dimen>
+    <dimen name="synoScrollViewTopmMarginLandscape">5dp</dimen>
+
+    <!--Synopsis scroll Text View-->
+    <dimen name="synoTextViewMarginLandscape">5dp</dimen>
+    <dimen name="synoTextViewPaddingLandscape">5dp</dimen>
+
+    <!--Movie Title TExt View-->
+    <dimen name="movieTitleTextSizeLandscape">30sp</dimen>
+
 </resources>

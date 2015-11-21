@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/movieDetailsFragRootRelativeLayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Title Text View   android:text="The Martian"-->
+        <TextView
+            android:id="@+id/titleTextView"
+            style="@style/movieDetailsTitleTextView" />
+
+        <!--Movie Poster Image View   android:src="@drawable/martian"-->
+        <ImageView
+            android:id="@+id/moviePosterImgView"
+            style="@style/moviePosterImgVeu" />
+
+        <!--Release Date Literal   android:text="Release Date:"-->
+        <TextView
+            android:id="@+id/releaseDateTextLiteral"
+            style="@style/releaseDateLitralText"/>
+
+        <!--Release Date TExt view   android:text="2015-10-02"-->
+        <TextView
+            android:id="@+id/releaseDateTextview"
+            style="@style/releaseDateTVt"/>
+
+        <!--Vote Text Literal  android:text="Average Vote:"-->
+        <TextView
+            android:id="@+id/voteTextLiteral"
+            style="@style/voteLtrlText"/>
+
+        <!--Vote Text View   android:text="7.7"-->
+        <TextView
+            android:id="@+id/voteTextView"
+            style="@style/voteTV"/>
+
+        <!--Synopsis Text View-->
+        <ScrollView
+            style="@style/synoScrollView">
+
+            <TextView
+                android:id="@+id/synopTextView"
+                style="@style/synoTV"/>
+
+        </ScrollView>
+    </RelativeLayout>
+
+</ScrollView>
