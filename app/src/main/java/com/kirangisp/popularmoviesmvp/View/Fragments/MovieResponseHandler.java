@@ -16,7 +16,7 @@ import android.widget.GridView;
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 import com.kirangisp.commonandroidobjects.MoviePosterdata;
 import com.kirangisp.popularmoviesmvp.R;
-import com.squareup.picasso.Picasso;
+import com.kirangisp.popularmoviesmvp.View.MovieDataCustomAdapter;
 import com.kirangisp.commonandroidobjects.RunningDeviceProps;
 import java.util.ArrayList;
 

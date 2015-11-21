@@ -1,4 +1,4 @@
-package com.kirangisp.popularmoviesmvp.View.Fragments;
+package com.kirangisp.popularmoviesmvp.View;
 
 import android.util.Log;
 import org.json.JSONArray;

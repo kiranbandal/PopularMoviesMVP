@@ -13,6 +13,7 @@ import com.kirangisp.popularmoviesmvp.Presenter.IPosterFragmentView;
 import com.kirangisp.popularmoviesmvp.Presenter.PosterFragmentPresenterImpl;
 import com.kirangisp.popularmoviesmvp.R;
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
+import com.kirangisp.popularmoviesmvp.View.MovieJSONParser;
 
 
 /**

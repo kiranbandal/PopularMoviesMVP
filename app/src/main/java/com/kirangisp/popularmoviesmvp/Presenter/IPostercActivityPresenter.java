@@ -8,4 +8,6 @@ import android.content.Context;
 public interface IPostercActivityPresenter {
 
     boolean isDeviceConnectedToInternet(Context appContext,String logTagName);
+
+    void getMoviesJson(String apiURL);
 }

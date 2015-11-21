@@ -9,4 +9,6 @@ public interface IPosterActivityInteractor {
 
     //To check if the device is connected to the internet
     boolean hasInternetConnection (Context appContext,String logTagName);
+
+    void getSortedMovies(String apiQueryURL, final INetworkCallFinished finishedListener);
 }

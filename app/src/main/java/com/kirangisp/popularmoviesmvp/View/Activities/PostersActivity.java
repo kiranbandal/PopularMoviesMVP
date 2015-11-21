@@ -5,12 +5,17 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.kirangisp.popularmoviesmvp.Presenter.IPostersActivityView;
 import com.kirangisp.popularmoviesmvp.Presenter.PosterActivityPresenterImpl;
 import com.kirangisp.popularmoviesmvp.R;
+import com.kirangisp.popularmoviesmvp.View.Fragments.MovieResponseHandler;
 import com.kirangisp.popularmoviesmvp.View.Fragments.PostersFragment;
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
+import com.kirangisp.popularmoviesmvp.View.MovieJSONParser;
 
 public class PostersActivity extends AppCompatActivity implements IPostersActivityView {
 
@@ -39,6 +44,57 @@ public class PostersActivity extends AppCompatActivity implements IPostersActivi
         //Add the movie posters fragment
         addPostersFragment(savedInstanceState);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater mnuInflater = getMenuInflater();
+
+        try {
+            mnuInflater.inflate(R.menu.menu_posters_activity, menu);
+        } catch (android.view.InflateException ex) {
+            String errMsg = CommonGlobalObjects.constructErrorMsg("Inflate Exception", "onCreateOptionsMenu()", ex.getMessage());
+            Log.e(POSTER_ACTIVITY_LOG_TAG, errMsg);
+        }
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        //get Id of the clicked menu item
+        int id = item.getItemId();
+
+        if (id == R.id.action_sort_most_popular){
+
+              /*query the movie db api to get the movie data sorted on most popular
+            * Construct the url by reading global constants file
+            * Sample query : http://api.themoviedb.org/3/discover/movie?&api_key=KEY_HERE&sort_by=popularity.desc
+            * */
+
+            String sortMoviesOnPopularityURL = CommonGlobalObjects.getPopularMoviesURL()
+                    + CommonGlobalObjects.getMovieApiKey()
+                    + CommonGlobalObjects.getSortKeyWord()
+                    + CommonGlobalObjects.getPopularityFieldName();
+            presenter.getMoviesJson(sortMoviesOnPopularityURL);
+
+        }
+
+        else if(id == R.id.action_sort_highest_rated){
+
+            //query the movie db api to get the movie data sorted on highest rating
+            String sortMoviesOnHighestVotingUrl = CommonGlobalObjects.getPopularMoviesURL()
+                    + CommonGlobalObjects.getMovieApiKey()
+                    + CommonGlobalObjects.getSortKeyWord()
+                    + CommonGlobalObjects.getHighestRatingFieldName();
+
+            presenter.getMoviesJson(sortMoviesOnHighestVotingUrl);
+        }
+
+
+        return true;
     }
 
     //region IPostersActivityView Implementation
@@ -82,6 +138,21 @@ public class PostersActivity extends AppCompatActivity implements IPostersActivi
         }
 
 
+    }
+
+    @Override
+    public void deleiverSortedMoviesJson(String sortedMoviesData) {
+
+        String sortedMovieResponse;
+        sortedMovieResponse= sortedMoviesData;
+
+        //create instance of response handler and depending in request type, call the appropriate method
+        MovieResponseHandler responseHandler = new MovieResponseHandler();
+
+        //save the ArrayList in global property so that it can be accessed on the reqd fragment
+        CommonGlobalObjects.setMoviePosterInfoArrayLst(new MovieJSONParser(sortedMovieResponse).parseFavoriteMoviesJSON());
+        responseHandler.displayMoviePosters(CommonGlobalObjects.getMoviePosterInfoArrayLst(),
+                PostersActivity.this,R.id.moviePostersGrdView);
     }
     //endregion
 }

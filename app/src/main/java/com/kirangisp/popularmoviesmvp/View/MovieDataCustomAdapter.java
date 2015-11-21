@@ -1,4 +1,4 @@
-package com.kirangisp.popularmoviesmvp.View.Fragments;
+package com.kirangisp.popularmoviesmvp.View;
 
 
 

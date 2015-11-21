@@ -8,4 +8,6 @@ import android.os.Bundle;
 public interface IPostersActivityView {
 
     boolean addPostersFragment(Bundle savedInstancee);
+
+    void deleiverSortedMoviesJson( String sortedMoviesData);
 }

@@ -58,4 +58,9 @@ public class PosterActivityInteractionImpl implements IPosterActivityInteractor 
         return false;
 
     }
+
+    @Override
+    public void getSortedMovies(String apiQueryURL, INetworkCallFinished finishedListener) {
+        new FetchMovieDataTask(apiQueryURL,finishedListener).execute();
+    }
 }
