@@ -3,4 +3,21 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <!--Background color of movie title text view on Movie Detail activity-->
+    <color name="movieTitleTextViewBGColor">#000000</color>
+
+    <color name="posterReleaseDateVoteLayoutBGColor">#e0e0e0</color>
+
+    <!--Background color For the Application-->
+    <color name="appBGColor">#bbbbb5</color>
+
+    <!--Background color detail fragment-->
+    <color name="blackColor">#000000</color>
+
+
+    <!--Background color detail fragment-->
+    <color name="whiteColor">#FFFFFF</color>
+
 </resources>
