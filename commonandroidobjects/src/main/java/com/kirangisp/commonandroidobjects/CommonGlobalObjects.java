@@ -32,7 +32,7 @@ public class CommonGlobalObjects {
     //endregion
 
     //region Movies DB API Key
-    public final static String MOVIE_API_KEY = "5254a84a6c18f9e3cbec007290ea297c";
+    public final static String MOVIE_API_KEY = "KEY_HERE";
 
     public static String getMovieApiKey() {
         return MOVIE_API_KEY;
@@ -86,6 +86,38 @@ public class CommonGlobalObjects {
 
     public static void setMoviePosterInfoArrayLst(ArrayList<MoviePosterdata> moviePosterInfoArrayLst) {
         CommonGlobalObjects.moviePosterInfoArrayLst = moviePosterInfoArrayLst;
+    }
+    //endregion
+
+    //region Sort word in query
+    public final static String SORT_BY_KEY_WORD = "&sort_by=";
+
+    public static String getSortKeyWord() {
+
+        return SORT_BY_KEY_WORD;
+    }
+    //endregion
+
+    //region Popularity Field Name
+    //Query to get movie data , sorted by popularity and rating, sample query as below
+    //http://api.themoviedb.org/3/discover/movie?&api_key=&sort_by=popularity.desc
+    // first part of the query, till api_key is already defined above, then plug in he api key and sort key word,
+    // so te last part is as below
+
+    //Reference : https://www.themoviedb.org/documentation/api/discover
+    public final static String POPULARITY_FIELD_NAME = "popularity.desc";
+
+    public static String getPopularityFieldName() {
+        return POPULARITY_FIELD_NAME;
+    }
+    //endregion
+
+    //region Hightest Rating Field NAme
+    //Rating
+    public final static String RATING_FIELD_NAME = "vote_average.desc";
+
+    public static String getHighestRatingFieldName() {
+        return RATING_FIELD_NAME;
     }
     //endregion
 
