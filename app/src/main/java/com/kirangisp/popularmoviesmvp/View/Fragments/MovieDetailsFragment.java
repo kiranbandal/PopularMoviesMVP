@@ -11,15 +11,20 @@ import android.view.ViewGroup;
 
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 import com.kirangisp.commonandroidobjects.SelectedMovieData;
+import com.kirangisp.popularmoviesmvp.Presenter.IMovieDetailsFragPressenter;
+import com.kirangisp.popularmoviesmvp.Presenter.IMovieDetaisFragmentView;
 import com.kirangisp.popularmoviesmvp.R;
 
 /**
  * The fragment that shows the selected movie details.
  */
-public class MovieDetailsFragment extends Fragment {
+public class MovieDetailsFragment extends Fragment implements IMovieDetaisFragmentView {
 
     private final static String MOVIE_DETAILS_FRAG_LOG_TAG = "Movie Details Fragment";
     View mFragmenRoot;
+
+    //reference to the Presenter
+    IMovieDetailsFragPressenter presenter;
 
     //region On Create
     @Override
@@ -98,13 +103,18 @@ public class MovieDetailsFragment extends Fragment {
                             + CommonGlobalObjects.getMovieDetailsURLPart2()
                             + CommonGlobalObjects.getMovieApiKey();
 
-            //execute the task
-            //new FetchMovieDataTask(rqst, getActivity()).execute();
-            //endregion
-
+            //pass the url to the presenter and start the process of getting movie details
+            presenter.showMovieDetails(getSelectedMovieDetailsURL);
 
         }catch (Exception ex){
 
         }
     }
+
+    //region Results are returned here from the presenter
+    @Override
+    public void deleiverMovieDetailsData(String jsonResult) {
+
+    }
+    //endregion
 }
