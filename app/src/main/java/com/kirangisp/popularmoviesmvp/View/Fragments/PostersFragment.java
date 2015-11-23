@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.kirangisp.commonandroidobjects.MoviePosterdata;
 import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IPosterFragmentPresenter;
 import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IPosterFragmentView;
 import com.kirangisp.popularmoviesmvp.Presenter.Fragments.PosterFragmentPresenterImpl;
@@ -20,6 +21,8 @@ import com.kirangisp.popularmoviesmvp.R;
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 import com.kirangisp.popularmoviesmvp.View.Activities.MovieDetailsActivity;
 import com.kirangisp.popularmoviesmvp.View.MovieJSONParser;
+
+import java.util.ArrayList;
 
 
 /**
@@ -47,9 +50,9 @@ public class PostersFragment extends Fragment implements IPosterFragmentView, Ad
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         try {
-
             fragmentRootView = inflater.inflate(R.layout.layout_posters_fragment, container, false);
-        } catch (android.view.InflateException ex) {
+        }
+        catch (android.view.InflateException ex) {
             String errMsg = CommonGlobalObjects.constructErrorMsg("Inflate Exception", "onCreateOptionsMenu()", ex.getMessage());
             Log.e(POSTERS_GRIDVIEW_FRAGMENT_LOG_TAG, errMsg);
         }
@@ -75,6 +78,16 @@ public class PostersFragment extends Fragment implements IPosterFragmentView, Ad
         if (savedInstanceState != null &&
                 savedInstanceState.getParcelableArrayList(CommonGlobalObjects.getMoviePostersDataKey()) != null) {
 
+            //create instance of response handler and depending in request typr, call the appropriate method
+            MovieResponseHandler responseHandler = new MovieResponseHandler();
+
+            //get the ArrayList from the bundle
+            ArrayList<MoviePosterdata> moviePostersData =
+                    savedInstanceState.getParcelableArrayList(CommonGlobalObjects.getMoviePostersDataKey());
+
+            responseHandler.displayMoviePosters(moviePostersData,
+                    getActivity(),R.id.moviePostersGrdView);
+            return;
         }
 
         //Read the URL value from Global Constants
@@ -82,9 +95,28 @@ public class PostersFragment extends Fragment implements IPosterFragmentView, Ad
 
         //call the method on the presenter to start the process to get the popular movie data
         presenter.getPopularMoviesData(getPopularMoviesURL);
+    }
+    //endregion
+
+    //region on Save InstanceState
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        try {
+            //save our array list of HelperModuleMovieData here
+            outState.putParcelableArrayList(CommonGlobalObjects.getMoviePostersDataKey(),
+                    CommonGlobalObjects.getMoviePosterInfoArrayLst());
+
+        }
+        catch (Exception e){
+            String errMsg = CommonGlobalObjects.constructErrorMsg("Generic Exception", "onSaveInstanceState()", e.getMessage());
+            Log.e(POSTERS_GRIDVIEW_FRAGMENT_LOG_TAG, errMsg);
+        }
+
 
     }
-
+    //endregion
 
     //region called from the presenter to deliver the popular movies data in json
     @Override
