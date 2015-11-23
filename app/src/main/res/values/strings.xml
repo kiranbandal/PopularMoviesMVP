@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Popular Movies MVP</string>
-    <string name="title_activity_movie_posters">MoviePostersActivity</string>
-    <string name="title_activity_posters">PostersActivity</string>
 
     <!--Titles for Options Menu items on Movie Posters Activity-->
     <string name="menu_title_Sort_most_popular">Show Most Popular</string>
     <string name="menu_title_sort_highest_rated">Show Highest Rated</string>
-    <string name="title_activity_movie_details">MovieDetailsActivity</string>
+
+    <!--Movie Posters Activity Title-->
+    <string name="title_activity_posters">Popular Movies</string>
+
+    <!--Movie Details Activity Title-->
+    <string name="title_activity_movie_details">Selected Movie Details</string>
 
 
 </resources>
