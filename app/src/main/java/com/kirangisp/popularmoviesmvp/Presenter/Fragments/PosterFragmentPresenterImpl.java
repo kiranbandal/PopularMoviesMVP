@@ -1,10 +1,12 @@
-package com.kirangisp.popularmoviesmvp.Presenter;
+package com.kirangisp.popularmoviesmvp.Presenter.Fragments;
 
 import android.content.Context;
 
 import com.kirangisp.popularmoviesmvp.Model.IPosterFragmentInteractor;
 import com.kirangisp.popularmoviesmvp.Model.PosterFragmenInteractorImpl;
 import com.kirangisp.popularmoviesmvp.Model.INetworkCallFinished;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IPosterFragmentPresenter;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IPosterFragmentView;
 
 
 /**

@@ -1,10 +1,12 @@
-package com.kirangisp.popularmoviesmvp.Presenter;
+package com.kirangisp.popularmoviesmvp.Presenter.Activities;
 
 import android.content.Context;
 
 import com.kirangisp.popularmoviesmvp.Model.INetworkCallFinished;
 import com.kirangisp.popularmoviesmvp.Model.IPosterActivityInteractor;
 import com.kirangisp.popularmoviesmvp.Model.PosterActivityInteractionImpl;
+import com.kirangisp.popularmoviesmvp.Presenter.Activities.IPostercActivityPresenter;
+import com.kirangisp.popularmoviesmvp.Presenter.Activities.IPostersActivityView;
 
 /**
  * Created by User on 18-Nov-15.

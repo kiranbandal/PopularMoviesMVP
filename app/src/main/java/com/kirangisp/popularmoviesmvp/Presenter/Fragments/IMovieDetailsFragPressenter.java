@@ -1,4 +1,4 @@
-package com.kirangisp.popularmoviesmvp.Presenter;
+package com.kirangisp.popularmoviesmvp.Presenter.Fragments;
 
 /**
  * Created by User on 21-Nov-15.
@@ -6,4 +6,5 @@ package com.kirangisp.popularmoviesmvp.Presenter;
 public interface IMovieDetailsFragPressenter {
 
     void showMovieDetails(String selectedMovieURL);
+
 }

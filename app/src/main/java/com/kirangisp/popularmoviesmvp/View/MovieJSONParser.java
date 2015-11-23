@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 import com.kirangisp.commonandroidobjects.MoviePosterdata;
+import com.kirangisp.commonandroidobjects.SelectedMovieData;
 
 
 /**
@@ -32,34 +33,40 @@ public class MovieJSONParser {
     //endregion
 
 
-//    public HelperModuleMovieDetails getMovieDetails() {
-//
-//        try {
-//
-//            JSONObject jsonObj = new JSONObject(this.mInputJSONString);
-//
-//            //we have flat json object here, so we can directly get the needed values from it
-//            String relaseDate = jsonObj.getString("release_date");
-//            String ttl = jsonObj.getString("original_title");
-//            String vote = jsonObj.getString("vote_average");
-//            String posterPath = jsonObj.getString("poster_path");
-//            String synopsis = jsonObj.getString("overview");
-//
-//            return new HelperModuleMovieDetails(posterPath,
-//                    null,
-//                    ttl,
-//                    relaseDate,
-//                    vote,
-//                    synopsis);
-//
-//        }
-//        catch (JSONException ex) {
-//            return null;
-//
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
+    public SelectedMovieData getMovieDetails() {
+
+        try {
+
+            JSONObject jsonObj = new JSONObject(this.mInputJSONString);
+
+            //we have flat json object here, so we can directly get the needed values from it
+            String relaseDate = jsonObj.getString("release_date");
+            String ttl = jsonObj.getString("original_title");
+            String vote = jsonObj.getString("vote_average");
+            String posterPath = jsonObj.getString("poster_path");
+            String synopsis = jsonObj.getString("overview");
+
+            SelectedMovieData selectedMovie = new SelectedMovieData(posterPath,
+                    ttl,
+                    relaseDate,
+                    vote,
+                    synopsis);
+
+            String a;
+            a = "asd";
+            return selectedMovie;
+        }
+        catch (JSONException ex) {
+            String errMsg = CommonGlobalObjects.constructErrorMsg("JSON Exception", "getMovieDetails()", ex.getMessage());
+            Log.e(JSON_PARSER_LOG_TAG, errMsg);
+            return null;
+
+        } catch (Exception e) {
+            String errMsg = CommonGlobalObjects.constructErrorMsg("Generic Exception", "getMovieDetails()", e.getMessage());
+            Log.e(JSON_PARSER_LOG_TAG, errMsg);
+            return null;
+        }
+    }
 
     /*
      * This is the  method that gets called to parse the raw json (got from moviedb api call

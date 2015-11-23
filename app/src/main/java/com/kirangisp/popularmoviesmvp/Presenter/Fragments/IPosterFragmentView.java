@@ -1,4 +1,4 @@
-package com.kirangisp.popularmoviesmvp.Presenter;
+package com.kirangisp.popularmoviesmvp.Presenter.Fragments;
 
 /**
  * Created by User on 18-Nov-15.

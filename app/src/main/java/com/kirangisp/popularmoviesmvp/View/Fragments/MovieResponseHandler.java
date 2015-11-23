@@ -76,7 +76,7 @@ public class MovieResponseHandler {
 
             //construct the url to get the the movie thumbnail using Picasso
             String mMoviePosterBaseURL = CommonGlobalObjects.getMoviePosterBaseURL();
-            String mPosterImageSize = CommonGlobalObjects.getMoviePosterImageSize();
+            String mPosterImageSize =  RunningDeviceProps.getImgSizeToBeQueried();
 
             //set the Place holder image from Drawable if not set already
             if (mPlaceHolderDrawable == null) {

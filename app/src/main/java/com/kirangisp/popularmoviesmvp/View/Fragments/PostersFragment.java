@@ -13,9 +13,9 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.kirangisp.popularmoviesmvp.Presenter.IPosterFragmentPresenter;
-import com.kirangisp.popularmoviesmvp.Presenter.IPosterFragmentView;
-import com.kirangisp.popularmoviesmvp.Presenter.PosterFragmentPresenterImpl;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IPosterFragmentPresenter;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IPosterFragmentView;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.PosterFragmentPresenterImpl;
 import com.kirangisp.popularmoviesmvp.R;
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 import com.kirangisp.popularmoviesmvp.View.Activities.MovieDetailsActivity;

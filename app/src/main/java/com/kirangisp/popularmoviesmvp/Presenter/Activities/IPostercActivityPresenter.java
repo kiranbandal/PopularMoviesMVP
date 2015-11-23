@@ -1,4 +1,4 @@
-package com.kirangisp.popularmoviesmvp.Presenter;
+package com.kirangisp.popularmoviesmvp.Presenter.Activities;
 
 import android.content.Context;
 

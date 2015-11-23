@@ -1,4 +1,4 @@
-package com.kirangisp.popularmoviesmvp.Presenter;
+package com.kirangisp.popularmoviesmvp.Presenter.Fragments;
 
 import android.content.Context;
 

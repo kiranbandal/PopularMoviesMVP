@@ -9,21 +9,22 @@ import com.kirangisp.commonandroidobjects.MoviePosterdata;
  * This class is used on MovieDetailInfoFragments to show the details of a selected movie. This class implements Parcelable
  * so that instance of this class can be saved into the Bundle.
  */
-public class SelectedMovieData extends MoviePosterdata implements Parcelable {
+public class SelectedMovieData  implements Parcelable {
 
     private String title;
     private String releaseYear;
     private String vote;
     private String synopsis;
+    private String moviePosterPath;
+
 
     public SelectedMovieData(String moviePosterPathInput,
-                                    String movieIdInAPIInput,
                                     String movieTitle,
                                     String movieReleaseYear,
                                     String movieVote,
                                     String movieSynopsis) {
-        super(moviePosterPathInput, movieIdInAPIInput);
 
+        this.moviePosterPath = moviePosterPathInput;
         this.title = movieTitle;
         this.releaseYear = movieReleaseYear;
         this.vote = movieVote;
@@ -32,22 +33,22 @@ public class SelectedMovieData extends MoviePosterdata implements Parcelable {
 
     //Constructor needed for Parcelable
     SelectedMovieData(Parcel input) {
-        super(input);
 
         title = input.readString();
         releaseYear = input.readString();
         vote = input.readString();
         synopsis = input.readString();
+        moviePosterPath = input.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        super.writeToParcel(dest, flags);
 
         dest.writeString(title);
         dest.writeString(releaseYear);
         dest.writeString(vote);
         dest.writeString(synopsis);
+        dest.writeString(moviePosterPath);
     }
 
     @Override
@@ -66,6 +67,10 @@ public class SelectedMovieData extends MoviePosterdata implements Parcelable {
             return new SelectedMovieData[size];
         }
     };
+
+    public String getMoviePosterPath() {
+        return moviePosterPath;
+    }
 
     public String getTitle() {
         return title;

@@ -8,12 +8,15 @@ import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.kirangisp.commonandroidobjects.CommonGlobalObjects;
 import com.kirangisp.commonandroidobjects.SelectedMovieData;
-import com.kirangisp.popularmoviesmvp.Presenter.IMovieDetailsFragPressenter;
-import com.kirangisp.popularmoviesmvp.Presenter.IMovieDetaisFragmentView;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IMovieDetailsFragPressenter;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IMovieDetaisFragmentView;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.MovieDetailsFragPressenterImpl;
 import com.kirangisp.popularmoviesmvp.R;
+import com.kirangisp.popularmoviesmvp.View.MovieJSONParser;
 
 /**
  * The fragment that shows the selected movie details.
@@ -30,6 +33,9 @@ public class MovieDetailsFragment extends Fragment implements IMovieDetaisFragme
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //crate Presenter
+        presenter = new MovieDetailsFragPressenterImpl(this);
     }
     //endregion
 
@@ -63,7 +69,7 @@ public class MovieDetailsFragment extends Fragment implements IMovieDetaisFragme
 
         try {
             outState.putParcelable(CommonGlobalObjects.getMovieDetailsKey(),
-                    CommonGlobalObjects.getMovieDetailsInfo());
+                    CommonGlobalObjects.getSelectedMovieDetails());
         }
 
         catch (Exception e) {
@@ -108,6 +114,9 @@ public class MovieDetailsFragment extends Fragment implements IMovieDetaisFragme
 
         }catch (Exception ex){
 
+            String errMsg = CommonGlobalObjects.constructErrorMsg("Generic Exception", "onActivityCreated()", ex.getMessage());
+            Log.e(MOVIE_DETAILS_FRAG_LOG_TAG, errMsg);
+            return ;
         }
     }
 
@@ -115,6 +124,28 @@ public class MovieDetailsFragment extends Fragment implements IMovieDetaisFragme
     @Override
     public void deleiverMovieDetailsData(String jsonResult) {
 
+        String selectedMovieData;
+        selectedMovieData = jsonResult;
+
+        //region No details found, notify user and exit
+        if (selectedMovieData == null || selectedMovieData.isEmpty() ){
+            Toast.makeText(getActivity(),CommonGlobalObjects.getMovieDetailsNotFoundMessage(),
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        //endregion
+
+        //parse the json and set the global object
+
+        //SelectedMovieData d = new MovieJSONParser(selectedMovieData).getMovieDetails();
+        CommonGlobalObjects.setSelectedMovieDetails(new MovieJSONParser(selectedMovieData).getMovieDetails());
+
+        //Render the Movie Data (Selected Movie details)
+        MovieResponseHandler responseHndlr = new MovieResponseHandler();
+        responseHndlr.displayMovieDetails(getActivity(),CommonGlobalObjects.getSelectedMovieDetails());
+
+
     }
     //endregion
+
 }

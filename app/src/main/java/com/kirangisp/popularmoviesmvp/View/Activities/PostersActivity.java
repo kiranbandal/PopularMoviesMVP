@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.kirangisp.popularmoviesmvp.Presenter.IPostersActivityView;
-import com.kirangisp.popularmoviesmvp.Presenter.PosterActivityPresenterImpl;
+import com.kirangisp.popularmoviesmvp.Presenter.Activities.IPostersActivityView;
+import com.kirangisp.popularmoviesmvp.Presenter.Activities.PosterActivityPresenterImpl;
 import com.kirangisp.popularmoviesmvp.R;
 import com.kirangisp.popularmoviesmvp.View.Fragments.MovieResponseHandler;
 import com.kirangisp.popularmoviesmvp.View.Fragments.PostersFragment;

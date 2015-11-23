@@ -1,7 +1,10 @@
-package com.kirangisp.popularmoviesmvp.Presenter;
+package com.kirangisp.popularmoviesmvp.Presenter.Fragments;
 
 import com.kirangisp.popularmoviesmvp.Model.IMovieDetailsInteractor;
 import com.kirangisp.popularmoviesmvp.Model.INetworkCallFinished;
+import com.kirangisp.popularmoviesmvp.Model.MovieDetailsInteractorImpl;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IMovieDetailsFragPressenter;
+import com.kirangisp.popularmoviesmvp.Presenter.Fragments.IMovieDetaisFragmentView;
 
 /**
  * Created by User on 21-Nov-15.
@@ -18,6 +21,7 @@ public class MovieDetailsFragPressenterImpl implements IMovieDetailsFragPressent
     public MovieDetailsFragPressenterImpl(IMovieDetaisFragmentView detailsFragView){
 
         this.view = detailsFragView;
+        this.model = new MovieDetailsInteractorImpl();
     }
     //endregion
 

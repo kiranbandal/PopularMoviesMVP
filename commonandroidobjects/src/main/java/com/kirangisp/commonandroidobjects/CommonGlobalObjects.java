@@ -175,13 +175,7 @@ public class CommonGlobalObjects {
     }
     //endregion
 
-    //region MovieDetails instance to be saved in bundle in OnSaveInstance on Movie Details fragment
-    private static SelectedMovieData movieDetailsInfo;
 
-    public static SelectedMovieData getMovieDetailsInfo() {
-        return movieDetailsInfo;
-    }
-    //endregion
 
     //region Get Movie Details URL - Part 1
     //base url to fetch the movie details
@@ -200,5 +194,30 @@ public class CommonGlobalObjects {
         return MOVIE_DETAILS_URL_PART2;
     }
     //endregion
+
+    //region Get No Movie Details found message
+    //base url to fetch the movie details
+    public final static String NO_MOVIE_DETAILS_FOUND =
+            "Could not find details for this movie!!";
+
+    public static String getMovieDetailsNotFoundMessage() {
+
+        return NO_MOVIE_DETAILS_FOUND;
+    }
+    //endregion
+
+    //region MovieDetails instance to be saved in bundle in OnSaveInstance on Movie Details fragment
+    private static SelectedMovieData selectedMovieDtls;
+
+    public static SelectedMovieData getSelectedMovieDetails() {
+
+        return selectedMovieDtls;
+    }
+
+    public static void setSelectedMovieDetails(SelectedMovieData movieDetailsInfo) {
+        selectedMovieDtls = movieDetailsInfo;
+    }
+    //endregion
+
 
 }
